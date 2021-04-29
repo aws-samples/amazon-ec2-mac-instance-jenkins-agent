@@ -1,0 +1,27 @@
+pipeline {
+    agent { label 'ios'}
+    stages {
+        stage("Install Gems Locally") {
+            steps {
+                dir("HelloWorld") {
+                    sh """
+                    bundle config set --local path 'vendor/bundle'
+                    bundle install
+                    """ 
+                }
+            }
+        }
+        stage("Run Tests") {
+            steps{
+                dir("HelloWorld") {
+                    sh 'bundle exec fastlane test'
+                }
+            }
+        }
+    }
+    post {
+        success {
+            junit 'HelloWorld/fastlane/test_output/report.junit'
+        }
+    }
+}

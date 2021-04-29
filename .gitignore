@@ -1,0 +1,6 @@
+.DS_Store
+**/test_output
+HelloWorld/.bundle/
+HelloWorld/vendor/
+jenkins-cdk/.idea/
+HelloWorld/fastlane/report.xml

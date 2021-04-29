@@ -1,0 +1,61 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+
+  # This is executed before all lanes
+  before_all do |lane, options|
+    puts "Running lane: %s" % lane
+    dependencies
+  end
+
+  lane :dependencies do
+    puts "Installing dependencies"
+  end
+
+  desc "This lane executes the tests of the project using fastlane scan"
+  lane :test do
+    run_tests(project: "HelloWorld.xcodeproj",
+              devices: ["iPhone Xs"],
+              scheme: "HelloWorld (iOS)")
+  end
+
+  desc "This lane describes the build phase"
+  lane :build do
+    build_app(project: "HelloWorld.xcodeproj")
+  end
+
+  desc "This lane sync the code signing tot he local machine, Builds the application and uploads it to testflight"
+  lane :deploy_to_testflight do
+    # this uses git to sync code signing.
+    # For more information see https://docs.fastlane.tools/actions/sync_code_signing/
+    sync_code_signing(type: "fastlane")    # see code signing guide for more information
+    test
+    build
+    changelog_from_git_commits
+    upload_to_testflight(skip_waiting_for_build_processing: true)
+  end
+
+  after_all do
+    clean_build_artifacts
+  end
+
+  # print all errors of the lane
+  error do |ex|
+    # send a notification to your tool of choice
+  end
+end
