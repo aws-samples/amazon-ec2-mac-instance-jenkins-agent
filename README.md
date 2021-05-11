@@ -1,6 +1,6 @@
  # iOS mobile app CI/CD pipeline with Amazon EC2 Mac Instances 
 
-[TBA Link to Blogpost]()
+This sample is part of the blog post [Unify your iOS mobile app CI/CD pipeline with Amazon EC2 Mac Instances](https://aws.amazon.com/blogs/compute/unify-your-ios-mobile-app-ci-cd-pipeline-with-amazon-ec2-mac-instances-2/).
 
 In this repository you find two [CDK](https://aws.amazon.com/cdk/) stacks and an Hello World demo application to build with an Amazon EC2 Mac Instance as Jenkins agent.
 
@@ -61,7 +61,7 @@ Outputs:
 
 ## Configuration of the Agent
 
-Please follow the steps of the Blogpost [TBA Unify your mobile app CI/CD pipeline on EC2]() for the configuration of the Jenkins agent and the Amazon EC2 Mac Instance for building mobile applications and to build the demo `HelloWorld` demo application.
+Please follow the steps of the blog post [Unify your mobile app CI/CD pipeline on EC2](https://aws.amazon.com/blogs/compute/unify-your-ios-mobile-app-ci-cd-pipeline-with-amazon-ec2-mac-instances-2/) for the configuration of the Jenkins agent and the Amazon EC2 Mac Instance for building mobile applications and to build the demo `HelloWorld` demo application.
 
 You can use the Systems Manager Session Manager to establish an ssh tunel so you can use the VNC of the Amazon EC2 Mac instance:
 
