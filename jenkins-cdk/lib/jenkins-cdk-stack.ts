@@ -54,11 +54,11 @@ export class JenkinsStack extends cdk.Stack {
 
         const userdata = ec2.UserData.forLinux()
         userdata.addCommands(`
-yum update –y
+amazon-linux-extras install epel -y
 wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
 rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
-yum upgrade
-yum install jenkins java-1.8.0-openjdk-devel git -y
+yum upgrade -y
+yum install java-11-amazon-corretto-headless jenkins git -y
 systemctl daemon-reload
 systemctl start jenkins
 systemctl status jenkins
