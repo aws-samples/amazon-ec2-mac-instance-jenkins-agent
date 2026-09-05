@@ -27,7 +27,7 @@
     "@aws-cdk/core": "^1.180.0",
     "source-map-support": "^0.5.20",
     "hosted-git-info": ">=4.0.2",
-    "browserslist": ">=4.17.1",
+    "browserslist": ">=4.28.9",
     "ws": ">=8.20.1"
   }
 }
